@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>BRB</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link rel="stylesheet" href="css/jquery.bxslider.css"/>
+  <link rel="stylesheet" href="css/master.css">
+</head>
+<body ng-app="brb">
+  <ul class="bxslider">
+    <!-- Dynamic images comes here -->
+  </ul>
+  <div class="container"> <!--FIXME: Random whitespace, go away! -->
+    <div class="main" ng-controller="mainController">
+      <div class="row">
+          <div class="col s12">
+            <h1 class="center white-text">BRB</h1>
+            <p class="center white-text">Play this game in the meanwhile</p>
+            <div class="card white darken-1 user_card vertical_centered">
+              <div class="header blue-grey center">
+                <div class="user_image">
+                  <img class="circle" ng-src="{{server.winner.logo}}" alt="me">
+                </div>
+              </div>
+              <div class="card-content black-text center">
+                <span class="card-title">{{server.winner.display_name}}</span>
+                <p>{{server.winner.display_name}} is leading with {{server.winner.score}} Points!</p>
+              </div>
+            </div>
+
+            <div class="card white darken-1 game_card vertical_centered">
+              <div class="header blue-grey center">
+                <h1 class="header_content flow-text">What is the meaning of life and the universe?</h1>
+              </div>
+              <div class="card-content black-text">
+                <div class="row">
+                  <div class="col s6" ng-repeat="answer in server.quiz.answers">
+                    <div class="card answer blue lighten-2 white-text">
+                      <span class="number">{{$index +1}}</span>
+                      <blockquote class="options">
+                        {{answer}}
+                      </blockquote>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js" charset="utf-8"></script>
+  <script src="js/jquery.bxslider.js"></script>
+  <script src="js/services.js" charset="utf-8"></script>
+  <script src="js/app.js" charset="utf-8"></script>
+</body>
+</html>

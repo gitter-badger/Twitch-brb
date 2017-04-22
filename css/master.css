@@ -1,0 +1,93 @@
+/*
+MASTER CSS.css
+*****************/
+html{
+  overflow: hidden;
+}
+html, body, .container {
+  height: 100%;
+  width: 100%;
+}
+.main {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.vertical_centered{
+  position: relative;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.noPadding{
+  padding: 0 !important;
+}
+.bx-wrapper {
+  position: absolute;
+  margin: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  border: 0;
+}
+.bx-wrapper img {
+  max-width: none;
+}
+.header {
+  height: 70px;
+}
+.header::before {
+  content: '';
+  display: block;
+  position: absolute;
+  background-image: url("../images/backgrounds/3.jpg");
+  background-size: cover;
+  filter:opacity(60%);
+  height: 70px;
+  width: 100%
+}
+.header img {
+  margin-top: 3px;
+  max-width: 95px;
+}
+.header_content{
+  z-index: 99;
+  position: relative;
+  top: 50%;
+  bottom: 50%;
+  transform: translate(0,-50%);
+}
+.header .user_image {
+  margin-top: 10px;
+  height: 100px;
+  width: 100px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+.user_card {
+  width: 60%;
+}
+.user_card .card-content {
+  margin-top: 20px;
+}
+
+.game_card {
+  font-weight: 300;
+  width: 90%;
+}
+.number{
+  margin: auto 15px;
+}
+
+.options {
+  display: inline-block;
+}
