@@ -3,8 +3,6 @@ angular.module('brb.services', [])
 .factory("Constants", function() {
 
   return {
-    twitch_username: "the_blitzz",
-    backgroundInterval: 2000,
     background_images: {
       0: "images/backgrounds/1.jpg",
       1: "images/backgrounds/2.jpg",
@@ -12,10 +10,6 @@ angular.module('brb.services', [])
       3: "images/backgrounds/4.jpg",
       4: "images/backgrounds/5.jpg",
       5: "images/backgrounds/6.jpg"
-    },
-    twitch: {
-      viewer_api: "https://tmi.twitch.tv/group/user/the_blitzz/chatters", //TODO: Make dynamic
-      client_id: "0asgwzipe021ivr4cm7n8lrdvjiuwl"
     }
   }
 
