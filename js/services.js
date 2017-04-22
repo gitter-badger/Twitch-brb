@@ -89,9 +89,9 @@ angular.module('brb.services', [])
     },
     quiz: {
       id: 1,
-      question: "Some random quiz question here",
+      question: "Some random quiz question here?",
       answers: {
-        1: "this is totally the right answer",
+        1: "this is totally the right answer some long ass answer with no puntation etc even my english is broken now",
         2: "random answer lal",
         3: "I don't know what to type here",
         4: "plz, I want to sleep"

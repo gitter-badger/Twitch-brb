@@ -1,4 +1,4 @@
-angular.module('brb', ['brb.services'])
+angular.module('brb', ['brb.services', 'brb.directive'])
 
 .controller("mainController", ['$scope','Constants','Server', function($scope, Constants, Server) {
   $scope.users_leader = "hello";
@@ -17,8 +17,8 @@ angular.module('brb', ['brb.services'])
     pager: false,
     controls: false,
     auto: true,
-    speed: 3000, // Speed of the transition
-    pause: 4500 //The amount of time (in ms) between each auto transition
+    speed: 5000, // Speed of the transition
+    pause: 5500 //The amount of time (in ms) between each auto transition
 
   });
   function loadImages() {
@@ -26,7 +26,18 @@ angular.module('brb', ['brb.services'])
       var imageDom = "<li><img src='"+image+"'/></li>";
       $(".bxslider").append(imageDom);
     })
-    //$(".background .image[data-id='"+active_index+"']").addClass("active");
-    //cycleImage();
   };
+  $(document).on("repeat_done", function() {
+    var max_height = -1;
+    setTimeout(function () { //TODO: Possible to do without timeout? Kinda HACK-y
+      $('.answer').each(function(index, answer) {
+        console.log($(this).height());
+        if($(this).height() > max_height){
+          max_height = $(this).height();
+        }
+      })
+      console.log(max_height);
+      $(".answer").height(max_height);
+    }, 500);
+  })
 }])

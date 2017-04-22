@@ -8,6 +8,7 @@ html, body, .container {
   height: 100%;
   width: 100%;
 }
+
 .main {
   width: 100%;
   position: absolute;
@@ -21,7 +22,9 @@ html, body, .container {
   left: 50%;
   transform: translate(-50%);
 }
-
+.flex {
+  display: flex;
+}
 .noPadding{
   padding: 0 !important;
 }
@@ -84,10 +87,30 @@ html, body, .container {
   font-weight: 300;
   width: 90%;
 }
+.answers {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 1;
+  margin: 0;
+}
+.answer {
+  display: flex;
+  align-content: center;
+  flex: 1;
+}
 .number{
-  margin: auto 15px;
+  align-items: center;
+  display: flex;
+  margin: 10px 15px;
+}
+.number span {
 }
 
 .options {
+  border-left: 5px solid #fff;
+  padding-left: 10px;
+  margin: 10px 0;
   display: inline-block;
+  align-items: center;
+  display: flex;
 }
