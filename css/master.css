@@ -19,8 +19,9 @@ html, body, .container {
 
 .vertical_centered{
   position: relative;
-  left: 50%;
-  transform: translate(-50%);
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 .flex {
   display: flex;
@@ -41,7 +42,13 @@ html, body, .container {
 .bx-wrapper img {
   max-width: none;
 }
-.header {
+.title {
+  margin: 10px 0;
+}
+.card {
+  max-width: 800px !important; /* As the css says: It's important.. If we dont set a max-width, the cards goes all craazy */
+}
+.card .header {
   height: 70px;
 }
 .header::before {
@@ -54,10 +61,6 @@ html, body, .container {
   height: 70px;
   width: 100%
 }
-.header img {
-  margin-top: 3px;
-  max-width: 95px;
-}
 .header_content{
   z-index: 99;
   position: relative;
@@ -65,23 +68,41 @@ html, body, .container {
   bottom: 50%;
   transform: translate(0,-50%);
 }
-.header .user_image {
-  margin-top: 10px;
-  height: 100px;
-  width: 100px;
-  background-color: #fff;
-  border-radius: 50%;
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%);
-}
-
 .user_card {
   width: 60%;
 }
 .user_card .card-content {
-  margin-top: 20px;
+  padding-top: 0;
+  margin-top: -60px;
 }
+.user_image {
+  height: 100px;
+  width: 100px;
+  background-color: #fff;
+  border-radius: 50%;
+  position: relative;
+  margin: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.user_image img {
+  margin-top: 3px;
+  max-width: 95px;
+}
+
+.winner .user_image::before {
+  content: '';
+  display: block;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-image: url(../images/crown.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: -25px;
+}
+
 
 .game_card {
   font-weight: 300;

@@ -13,58 +13,86 @@ angular.module('brb.services', [])
     }
   }
 
-  })
+})
 
 .factory("Server", function(Constants) { //TODO: Change name of factory to something usefull
   /*
   Structure:
-    * We need a list of users (I guess from https://tmi.twitch.tv/group/user/the_blitzz/chatters)
-    * Users need multiple data (For bot)
-      - names (From some Twitch api?)
-      - image
-      - Score
-      - Currency?
-      - Stats (Time watched? etc..)
-    * User who won the quiz data -> https://api.twitch.tv/kraken/users/the_blitzz?client_id=0asgwzipe021ivr4cm7n8lrdvjiuwl
-    * Questions
-      - Answers
+  * We need a list of users (I guess from https://tmi.twitch.tv/group/user/the_blitzz/chatters)
+  * Users need multiple data (For bot)
+  - names (From some Twitch api?)
+  - image
+  - Score
+  - Currency?
+  - Stats (Time watched? etc..)
+  * User who won the quiz data -> https://api.twitch.tv/kraken/users/the_blitzz?client_id=0asgwzipe021ivr4cm7n8lrdvjiuwl
+  * Questions
+  - Answers
   */
   var fake = {
     players: {
       0: {
         name: "aleshgames",
+        overall_score: 0,
         score: 12,
-        //image?
+        currency: 0,
+        logo:"https://randomuser.me/api/portraits/women/10.jpg",
+        stats: {
+        }
       },
       1: {
         name: "dirtdriv3r",
-        score: 1,
-        //image?
+        overall_score: 0,
+        score: 13,
+        currency: 0,
+        logo:"https://static-cdn.jtvnw.net/jtv_user_pictures/dirtdriv3r-profile_image-58389b9b5eb5cf90-300x300.jpeg",
+        stats: {
+        }
       },
       2: {
         name: "DTCxPredator",
+        overall_score: 0,
         score: 20,
-        //image?
+        currency: 0,
+        logo:"https://static-cdn.jtvnw.net/jtv_user_pictures/dtcxpredator-profile_image-d283e604a28d6d46-300x300.png",
+        stats: {
+        }
       },
       3: {
         name: "jwelly",
+        overall_score: 0,
         score: 10,
-        //image?
+        currency: 0,
+        logo:"https://randomuser.me/api/portraits/women/13.jpg",
+        stats: {
+        }
       },
       4: {
         name: "kaarloost",
-        score: 11,
-        //image?
+        overall_score: 0,
+        score: 15,
+        currency: 0,
+        logo:"https://static-cdn.jtvnw.net/jtv_user_pictures/kaarloost-profile_image-816b8bc73b8011c7-300x300.png",
+        stats: {
+        }
       },
       5: {
         name: "supercrackyoutube",
+        overall_score: 0,
         score: 5,
-        //image?
+        currency: 0,
+        logo:"https://randomuser.me/api/portraits/women/15.jpg",
+        stats: {
+        }
       },
       6: {
         name: "the_blitzz",
+        overall_score: 0,
         score: 0,
-        //image?
+        currency: 0,
+        logo:"https://randomuser.me/api/portraits/women/16.jpg",
+        stats: {
+        }
       },
     },
     winner: {
@@ -78,7 +106,7 @@ angular.module('brb.services', [])
       "updated_at": "2017-04-22T04:01:52Z",
       "logo": "https://static-cdn.jtvnw.net/jtv_user_pictures/the_blitzz-profile_image-9b3dd78c7a8aa166-300x300.png",
       "_links": {
-      "self": "https://api.twitch.tv/kraken/users/the_blitzz"
+        "self": "https://api.twitch.tv/kraken/users/the_blitzz" //https://api.twitch.tv/kraken/users/the_blitzz?client_id=0asgwzipe021ivr4cm7n8lrdvjiuwl
       }
     },
     quiz: {
@@ -99,6 +127,25 @@ angular.module('brb.services', [])
   return {
     all: function(){
       return fake;
+    },
+    top_players: function(){
+      var players = [];
+      for( var key in fake.players ) {
+        if ( fake.players.hasOwnProperty(key) ) {
+          players.push(fake.players[key]);
+        }
+      }
+      var top_score = {};
+      var highscore_count = Math.min(3, players.length);
+      console.log(players.length);
+      for (var i=0; i<highscore_count; i++) {
+        var largest = 0;
+        for (var j=1; j< players.length ; j++) {
+          if (players[ j ].score > players[ largest ].score) largest = j;
+        }
+        top_score[ i ] = players[ largest ]; players.splice(largest , 1); // this modifies array, so probably you want to create copy of it before all this code
+      }
+      return top_score;
     }
   }
 })
