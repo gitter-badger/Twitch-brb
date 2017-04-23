@@ -4,28 +4,54 @@
   <meta charset="utf-8">
   <title>BRB</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+  <link rel="stylesheet" href="css/animate.css"/>
   <link rel="stylesheet" href="css/jquery.bxslider.css"/>
   <link rel="stylesheet" href="css/master.css">
 </head>
 <body ng-app="brb">
   <ul class="bxslider">
-    <!-- Dynamic images comes here -->
+    <!-- Dynamic images comes here from the loadImages() function-->
   </ul>
-  <div class="container"> <!--FIXME: Random whitespace, go away! -->
+  <div class="container">
     <div class="main" ng-controller="mainController">
       <div class="row">
         <div class="col s12">
-          <h1 class="center white-text">BRB</h1>
+          <h1 class="center white-text title">Twitch-brb</h1>
           <p class="center white-text">Play this game in the meanwhile</p>
-          <div class="card white darken-1 user_card vertical_centered">
+          <div class="card white darken-1 user_card bounce vertical_centered">
             <div class="header blue-grey center">
-              <div class="user_image">
-                <img class="circle" ng-src="{{server.winner.logo}}" alt="winner image">
-              </div>
             </div>
             <div class="card-content black-text center">
-              <span class="card-title">{{server.winner.display_name}}</span>
-              <p>{{server.winner.display_name}} is leading with {{server.winner.score}} Points!</p>
+              <div class="row"> <!--REVIEW Maybe an n-repeat is better?-->
+                <div class="col s4">
+                  <div class="user">
+                    <div class="user_image">
+                      <img class="circle" ng-src="{{top_players[1].logo}}" alt="player image">
+                    </div>
+                    <span class="card-title">{{top_players[1].name}}</span>
+                    <p>{{top_players[1].score}} Points!</p>
+                  </div>
+                </div>
+                <div class="col s4">
+                  <div class="user winner">
+                    <div class="user_image">
+                      <img class="circle" ng-src="{{top_players[0].logo}}" alt="player image">
+                    </div>
+                    <span class="card-title">{{top_players[0].name}}</span>
+                    <p>{{top_players[0].score}} Points!</p>
+                  </div>
+                </div>
+                <div class="col s4">
+                  <div class="user">
+                    <div class="user_image">
+                      <img class="circle" ng-src="{{top_players[2].logo}}" alt="player image">
+                    </div>
+                    <span class="card-title">{{top_players[2].name}}</span>
+                    <p>{{top_players[2].score}} Points!</p>
+                  </div>
+                </div>
+              </div>
+              <p class="score_message">{{top_players[0].name}} is leading by {{top_players[0].score - top_players[1].score }} Points!</p>
             </div>
           </div>
 
